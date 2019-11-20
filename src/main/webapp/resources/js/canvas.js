@@ -1,14 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Крокодил</title>
-</head>
-<body>
-<canvas id="myCanvas" width="350" height="250"
-        style="background-color:#eee; border: 1px solid #ccc; margin:10px;">
-    Ваш браузер не поддерживает Canvas
-</canvas>
-<script>
+
+function myCanvas() {
+/*<canvas id="myCanvas" width="350" height="250"
+    style="background-color:#eee; border: 1px solid #ccc; margin:10px;">
+        Ваш браузер не поддерживает Canvas
+    </canvas>*/
+
     var canvas = document.getElementById("myCanvas"),
         context = canvas.getContext("2d"),
         w = canvas.width,
@@ -44,6 +40,5 @@
         context.closePath();
         draw = false;
     });
-</script>
-</body>
-</html>
+
+}

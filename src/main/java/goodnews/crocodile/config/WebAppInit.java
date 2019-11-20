@@ -5,7 +5,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 public class WebAppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/goodnews/crocodile"};
+        return new String[]{"/"};
     }
 
     @Override

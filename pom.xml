@@ -43,13 +43,42 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-        <!--Узнать что это-->
+        <!--Узнать что это, почему недостаточно spring-mvc-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
+        <!--База данных-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.1.6.RELEASE</version>
+        </dependency>
+        <!--Уточнить-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.4.2.Final</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jaxb-api</artifactId>
+                    <groupId>javax.xml.bind</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jaxb-runtime</artifactId>
+                    <groupId>org.glassfish.jaxb</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Драйвер psgql -->
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.1-901-1.jdbc4</version>
+        </dependency>
+
     </dependencies>
 
     <build>
