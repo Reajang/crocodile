@@ -1,3 +1,4 @@
+/*
 package goodnews.crocodile.services.interfaces;
 
 import goodnews.crocodile.model.User;
@@ -9,3 +10,4 @@ public interface UserService {
     List<User> getAllUsers();
     Optional<User> findUserById(Long id);
 }
+*/

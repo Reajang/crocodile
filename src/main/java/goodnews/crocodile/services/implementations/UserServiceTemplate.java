@@ -1,3 +1,4 @@
+/*
 package goodnews.crocodile.services.implementations;
 
 import goodnews.crocodile.model.User;
@@ -33,3 +34,4 @@ public class UserServiceTemplate implements UserService {
         return user;
     }
 }
+*/

@@ -25,10 +25,10 @@ public class WebConfig implements WebMvcConfigurer {
         return resolver;
     }
     //ЧТо это?
-    /*@Override
+    @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("pages/canvas");
-    }*/
+        registry.addViewController("/").setViewName("main");
+    }
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/WEB-INF/pages/**").addResourceLocations("/pages/");

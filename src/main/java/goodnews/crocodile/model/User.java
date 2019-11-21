@@ -1,3 +1,4 @@
+/*
 package goodnews.crocodile.model;
 
 import goodnews.crocodile.model.statusEnum.UserRole;
@@ -33,3 +34,4 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserRole role;
 }
+*/

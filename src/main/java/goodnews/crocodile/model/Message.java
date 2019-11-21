@@ -1,3 +1,4 @@
+/*
 package goodnews.crocodile.model;
 
 import goodnews.crocodile.model.statusEnum.MessageType;
@@ -25,3 +26,4 @@ public class Message {
     @Enumerated(value = EnumType.STRING)
     private MessageType messageType;
 }
+*/
