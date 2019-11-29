@@ -1,4 +1,3 @@
-/*
 package goodnews.crocodile.repository;
 
 import goodnews.crocodile.model.User;
@@ -8,4 +7,3 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 }
-*/

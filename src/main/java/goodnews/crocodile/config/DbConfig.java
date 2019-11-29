@@ -13,23 +13,20 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-
-import static goodnews.crocodile.Utils.AppProps.inst;
+import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
 @ComponentScan("goodnews.crocodile.services")
 @EnableJpaRepositories(basePackages = "goodnews.crocodile.repository")
 @PropertySource("classpath:app.properties")
-public class AppConfig {
+public class DbConfig {
 
     @Value("${db.driver}")
     private String driver;
@@ -75,25 +72,38 @@ public class AppConfig {
         //Входит в hibernate-core. Добавлять в POM
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         entityManager.setJpaVendorAdapter(vendorAdapter);
+        entityManager.setJpaProperties(additionalProperties());
         //entityManager.setJpaDialect();
         return entityManager;
     }
 
-    /*@Bean
+    @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
-    }*/
+    }
 
-    /*@Bean
+    @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
-    }*/
+    }
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfig() {
         return new PropertySourcesPlaceholderConfigurer();
+    }
+    //Свойства для Hibernate
+    private Properties additionalProperties() {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
+        //Создание таблиц на основе сущностей
+        //validate : проверить схему, не вносить изменения в базу данных.
+        //update : обновить схему.
+        //create : создает схему, уничтожая предыдущие данные.
+        //create-drop : отказаться от схемы, когда SessionFactory закрывается явно, обычно, когда приложение остановлено.
+        //properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        return properties;
     }
 
 }

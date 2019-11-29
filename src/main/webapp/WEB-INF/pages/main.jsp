@@ -1,10 +1,15 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Крокодил</title>
 </head>
 <body>
-    <a href="/goodnews/crocodile/game">К игре</a>
+<div>
+    <form action="/logout" method="post">
+        <input type="submit" value="Sign Out">
+    </form>
+</div>
+<a href="/goodnews/crocodile/game">К игре</a>
+<a href="/goodnews/crocodile/register">Регистрация</a>
 </body>
 </html>

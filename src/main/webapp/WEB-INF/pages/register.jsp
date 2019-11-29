@@ -1,16 +1,27 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Kot
-  Date: 18.11.2019
-  Time: 21:00
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Регистрация</title>
 </head>
 <body>
-
+<h1>-------</h1>
+<form action="/goodnews/crocodile/register" method="post">
+    <table style="with: 50%">
+        <tr>
+            <td>Username</td>
+            <td><label>
+                <input type="text" name="username" />
+            </label>Name</td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><label>
+                <input type="password" name="password" />
+            </label>Password</td>
+        </tr>
+    </table>
+    <input type="submit" value="Submit" />Зарегистрировать</form>
+</body>
 </body>
 </html>

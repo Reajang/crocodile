@@ -1,4 +1,3 @@
-/*
 package goodnews.crocodile.services.implementations;
 
 import goodnews.crocodile.model.User;
@@ -33,5 +32,9 @@ public class UserServiceTemplate implements UserService {
         Optional<User> user = userRepository.findById(id);
         return user;
     }
+
+    @Override
+    public User createUser(User user) {
+        return userRepository.save(user);
+    }
 }
-*/
