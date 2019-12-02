@@ -21,7 +21,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "USER_NAME")
+    @Column(name = "USERNAME")
     private String userName;
 
     @Column(name = "PASSWORD")
@@ -30,10 +30,11 @@ public class User implements Serializable {
     @Column(name = "MESSAGES")
     @OneToMany(mappedBy = "author",
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             orphanRemoval = true)
     private List<Message> messages = new ArrayList<>();
 
+    //Должно работать подругому. через доп таблицу с user_id и списком role_id
     @Enumerated(value = EnumType.STRING)
     @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))

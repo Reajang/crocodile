@@ -11,7 +11,7 @@
         <tr>
             <td>Username</td>
             <td><label>
-                <input type="text" name="username" />
+                <input type="text" name="userName" />
             </label>Name</td>
         </tr>
         <tr>

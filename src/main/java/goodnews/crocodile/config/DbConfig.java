@@ -59,7 +59,6 @@ public class DbConfig {
         dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
-
         return dataSource;
     }
 
@@ -102,7 +101,7 @@ public class DbConfig {
         //update : обновить схему.
         //create : создает схему, уничтожая предыдущие данные.
         //create-drop : отказаться от схемы, когда SessionFactory закрывается явно, обычно, когда приложение остановлено.
-        //properties.setProperty("hibernate.hbm2ddl.auto", "update");
+        //properties.setProperty("hibernate.hbm2ddl.auto", "create");
         return properties;
     }
 

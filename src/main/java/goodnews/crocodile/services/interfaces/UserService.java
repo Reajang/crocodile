@@ -10,5 +10,5 @@ public interface UserService {
 
     Optional<User> findUserById(Long id);
 
-    User createUser(User user);
+    User save(User user);
 }

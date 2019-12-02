@@ -31,7 +31,7 @@ public class Message implements Serializable {
     @Enumerated(value = EnumType.STRING)
     private MessageType messageType;*/
 
-    /*@Column
+    @Column
     @CreationTimestamp
-    private Date creationDate;*/
+    private Date creationDate;
 }
