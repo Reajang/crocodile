@@ -4,6 +4,7 @@ import goodnews.crocodile.model.User;
 import goodnews.crocodile.repository.UserRepository;
 import goodnews.crocodile.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -36,5 +37,10 @@ public class UserServiceTemplate implements UserService {
     @Override
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public boolean isUserExists(String userName, String password) {
+        return userRepository.existsUserByUserNameAndPassword(userName, password);
     }
 }

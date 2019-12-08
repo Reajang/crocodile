@@ -8,15 +8,35 @@ import goodnews.crocodile.services.interfaces.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 
+import java.sql.*;
+
 /***
  * Временнай класс для проверки всякого
  */
 public class Main {
-    public static void main(String[] args) {
-        GenericApplicationContext context = new AnnotationConfigApplicationContext(DbConfig.class);
-        UserService service = context.getBean(UserServiceTemplate.class);
 
-        User user = service.findUserById(1L).get();
+    public static void main(String[] args) {
+
+        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/croc", "postgres", "root")){
+            String query = "SELECT * FROM croc_users WHERE id = ?;";
+            PreparedStatement statement = connection.prepareStatement(query);
+            //ResultSet resultSet = statement.executeQuery(query);
+            statement.setInt(1, 5);
+            statement.execute();
+            ResultSet resultSet = statement.getResultSet();
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("username"));
+            }
+
+        }
+        catch (SQLException e ){
+            e.printStackTrace();
+        }
+
+/*GenericApplicationContext context = new AnnotationConfigApplicationContext(DbConfig.class);
+        UserService service = context.getBean(UserServiceTemplate.class);*/
+
+        /*User user = service.findUserById(1L).get();
         Message message = new Message();
         for(int i=0; i<10; i++){
             message.setAuthor(user);
@@ -24,7 +44,7 @@ public class Main {
             user.getMessages().add(message);
             user.setUserName("qqqqqqqqqqqqqqqqqqq");
             service.save(user);
-        }
+        }*/
 
         /*User user1 = new User();
         user1.setUserName("qwe");

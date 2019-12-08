@@ -29,6 +29,6 @@ public class MainController {
     public String addUser(User user){
         user.getRole().add(UserRole.USER);
         userService.save(user);
-        return "redirect:/goodnews/crocodile/game";
+        return "redirect:/goodnews/crocodile";
     }
 }
