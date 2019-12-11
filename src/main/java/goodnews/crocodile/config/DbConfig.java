@@ -1,6 +1,8 @@
 package goodnews.crocodile.config;
 
 
+import goodnews.crocodile.aop.TestAspect1;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,7 +25,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan("goodnews.crocodile.services")
+@ComponentScan(value = {"goodnews.crocodile.services", "goodnews.crocodile.aop"})
 @EnableJpaRepositories(basePackages = "goodnews.crocodile.repository")
 @PropertySource("classpath:app.properties")
 public class DbConfig {

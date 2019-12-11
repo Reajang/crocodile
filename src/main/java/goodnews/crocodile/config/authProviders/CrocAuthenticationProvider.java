@@ -1,6 +1,5 @@
-package goodnews.crocodile.config.util;
+package goodnews.crocodile.config.authProviders;
 
-import goodnews.crocodile.repository.UserRepository;
 import goodnews.crocodile.services.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;

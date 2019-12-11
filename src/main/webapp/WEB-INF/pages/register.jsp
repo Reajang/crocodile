@@ -21,7 +21,7 @@
             </label>Password</td>
         </tr>
     </table>
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
     <input type="submit" value="Submit" />Зарегистрировать</form>
-</body>
 </body>
 </html>

@@ -1,6 +1,6 @@
 package goodnews.crocodile.config;
 
-import goodnews.crocodile.config.util.CrocAuthenticationProvider;
+import goodnews.crocodile.config.authProviders.CrocAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
@@ -30,14 +29,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/goodnews/crocodile/register",
-                        "/goodnews/crocodile",
-                        "/goodnews/crocodile/login").permitAll()//к этим урлам допускаются все без регистрации
+                        "/goodnews/crocodile", "/js/**").permitAll()//к этим урлам допускаются все без регистрации
                 .anyRequest().authenticated()//для остальных нужна авторизация
                     .and()
                 .formLogin()
                 //.loginPage("/goodnews/crocodile/login")//урл логина
-                .defaultSuccessUrl("/goodnews/crocodile")//на этот урл будет направлен пользователь после успешной аутентификации
-                .failureUrl("/goodnews/crocodile/login?error=true")//на этот после неуспешной
+                //.defaultSuccessUrl("/goodnews/crocodile/login?error=true")//на этот урл будет направлен пользователь после успешной аутентификации
+                .failureUrl("/goodnews/crocodile")//на этот после неуспешной
                 .permitAll()
                     .and()
                 .logout()//к форме logout также допускаются все
@@ -51,11 +49,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        /*auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
-                .usersByUsernameQuery("select userName")
-                .authoritiesByUsernameQuery("select u.username, ")*/
         auth.authenticationProvider(provider);
     }
 }

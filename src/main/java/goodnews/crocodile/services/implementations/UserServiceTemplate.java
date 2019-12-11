@@ -1,5 +1,6 @@
 package goodnews.crocodile.services.implementations;
 
+import goodnews.crocodile.aop.TestAspect1;
 import goodnews.crocodile.model.User;
 import goodnews.crocodile.repository.UserRepository;
 import goodnews.crocodile.services.interfaces.UserService;
@@ -15,6 +16,9 @@ import java.util.Optional;
 public class UserServiceTemplate implements UserService {
 
     private UserRepository userRepository;
+
+    @Autowired
+    private TestAspect1 aspect1;
 
     @Autowired
     public UserServiceTemplate(UserRepository userRepository) {
@@ -42,5 +46,12 @@ public class UserServiceTemplate implements UserService {
     @Override
     public boolean isUserExists(String userName, String password) {
         return userRepository.existsUserByUserNameAndPassword(userName, password);
+    }
+
+    @Override
+    public void delete(Long id) {
+        //Переделать
+        User user = findUserById(id).get();
+        userRepository.delete(user);
     }
 }

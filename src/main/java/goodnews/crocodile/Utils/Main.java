@@ -3,6 +3,7 @@ package goodnews.crocodile.Utils;
 import goodnews.crocodile.config.DbConfig;
 import goodnews.crocodile.model.Message;
 import goodnews.crocodile.model.User;
+import goodnews.crocodile.model.statusEnum.UserRole;
 import goodnews.crocodile.services.implementations.UserServiceTemplate;
 import goodnews.crocodile.services.interfaces.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -17,7 +18,27 @@ public class Main {
 
     public static void main(String[] args) {
 
-        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/croc", "postgres", "root")){
+        GenericApplicationContext context = new AnnotationConfigApplicationContext(DbConfig.class);
+        UserService service = context.getBean(UserServiceTemplate.class);
+        service.delete(3L);
+        //service.delete(11L);
+
+        /*User user1 = new User();
+        user1.setUserName("Aspecter");
+        user1.setPassword("123456789");
+        user1.getRole().add(UserRole.USER);
+        Message message1 = new Message();
+        message1.setAuthor(user1);
+        message1.setText(";sldifk;jsl");
+        Message message2 = new Message();
+        message2.setAuthor(user1);
+        message2.setText("dfgddfg");
+        user1.getMessages().add(message1);
+        user1.getMessages().add(message2);
+        System.out.println("Из метода main до аспекта");
+        service.save(user1);*/
+
+        /*try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/croc", "postgres", "root")){
             String query = "SELECT * FROM croc_users WHERE id = ?;";
             PreparedStatement statement = connection.prepareStatement(query);
             //ResultSet resultSet = statement.executeQuery(query);
@@ -31,10 +52,9 @@ public class Main {
         }
         catch (SQLException e ){
             e.printStackTrace();
-        }
+        }*/
 
-/*GenericApplicationContext context = new AnnotationConfigApplicationContext(DbConfig.class);
-        UserService service = context.getBean(UserServiceTemplate.class);*/
+
 
         /*User user = service.findUserById(1L).get();
         Message message = new Message();
@@ -46,20 +66,7 @@ public class Main {
             service.save(user);
         }*/
 
-        /*User user1 = new User();
-        user1.setUserName("qwe");
-        user1.setPassword("123");
-        user1.getRole().add(UserRole.USER);
-        Message message1 = new Message();
-        message1.setAuthor(user1);
-        message1.setText("Новое сообщение1");
-        Message message2 = new Message();
-        message2.setAuthor(user1);
-        message2.setText("Новое сообщение2");
-        user1.getMessages().add(message1);
-        user1.getMessages().add(message2);
-        service.createUser(user1);
-
+        /*
         User user2 = new User();
         user2.setUserName("zxc");
         user2.setPassword("789");

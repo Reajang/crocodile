@@ -13,4 +13,6 @@ public interface UserService {
     User save(User user);
 
     boolean isUserExists(String userName, String password);
+
+    void delete(Long id);
 }

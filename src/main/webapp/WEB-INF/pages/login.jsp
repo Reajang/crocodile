@@ -8,21 +8,10 @@
 <body>
 <h1>Логин</h1>
 <form action="/goodnews/crocodile/login" method="post">
-    <table style="with: 50%">
-        <tr>
-            <td>Username</td>
-            <td><label>
-                <input type="text" name="userName"/>
-            </label></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><label>
-                <input type="password" name="password"/>
-            </label></td>
-        </tr>
-    </table>
-    <input type="submit" value="Submit"/>Войти
+    <div><label>User name: <input type="text" name="userName"/></label></div>
+    <div><label>Password: <input type="text" name="password"/></label></div>
+    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+    <div><input type="submit" value="Submit"/></div>
 </form>
 <a href="/goodnews/crocodile/register">Перейти к регистрации</a>
 </body>
