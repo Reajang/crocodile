@@ -1,5 +1,6 @@
 package goodnews.crocodile.services.interfaces;
 
+import goodnews.crocodile.model.Message;
 import goodnews.crocodile.model.User;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface UserService {
     boolean isUserExists(String userName, String password);
 
     void delete(Long id);
+
+    void addMessage(Message message, Long id);
 }

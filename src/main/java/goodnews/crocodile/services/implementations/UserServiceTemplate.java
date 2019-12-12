@@ -1,6 +1,7 @@
 package goodnews.crocodile.services.implementations;
 
 import goodnews.crocodile.aop.TestAspect1;
+import goodnews.crocodile.model.Message;
 import goodnews.crocodile.model.User;
 import goodnews.crocodile.repository.UserRepository;
 import goodnews.crocodile.services.interfaces.UserService;
@@ -53,5 +54,12 @@ public class UserServiceTemplate implements UserService {
         //Переделать
         User user = findUserById(id).get();
         userRepository.delete(user);
+    }
+
+    @Override
+    public void addMessage(Message message, Long id) {
+        User user = userRepository.findById(id).get();
+        user.getMessages().add(message);
+        userRepository.save(user);
     }
 }

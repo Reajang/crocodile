@@ -12,6 +12,6 @@
 </div>
 <a href="/goodnews/crocodile/game">К игре</a>
 <a href="/goodnews/crocodile/register">Регистрация</a>
-<a href="/goodnews/crocodile/chatTemp">Чат</a>
+<%--<a href="/goodnews/crocodile/chatTemp">Чат</a>--%>
 </body>
 </html>

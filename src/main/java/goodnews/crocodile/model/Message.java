@@ -22,7 +22,7 @@ public class Message implements Serializable {
     private String text;
 
     //@Column(name = "OWNER")
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
     private User author;
 

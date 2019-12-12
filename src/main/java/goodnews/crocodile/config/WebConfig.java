@@ -24,7 +24,7 @@ public class WebConfig implements WebMvcConfigurer {
         resolver.setSuffix(".jsp");
         return resolver;
     }
-    //ЧТо это?
+    //ЧТо это? Почему дублируется в MvcConfig, но без этого не работает?
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("main");

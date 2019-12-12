@@ -19,11 +19,9 @@ import java.util.List;
 public class MainController {
 
     private final UserService userService;
-    private final MessageService messageService;
 
     @Autowired
-    public MainController(UserService userService, MessageService messageService) {
-        this.messageService = messageService;
+    public MainController(UserService userService ) {
         this.userService = userService;
     }
 
@@ -39,16 +37,5 @@ public class MainController {
         return "redirect:/goodnews/crocodile";
     }
 
-    @GetMapping("/chatTemp")
-    public String chatRead(Model model){
-        /*List<Message> messages = messageService.getAllMessages();
-        model.getAttribute("messages", messages);*/
-        return "chatTemp";
-    }
 
-    @PostMapping("/chatTemp")
-    public String chatWrite(Message message, User user){
-        user.getMessages().add(message);
-        return "chatTemp";
-    }
 }
