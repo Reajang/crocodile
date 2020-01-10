@@ -2,6 +2,7 @@ package goodnews.crocodile.model;
 
 import goodnews.crocodile.model.statusEnum.MessageType;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -13,17 +14,19 @@ import java.util.Date;
 @Table(name = "messages_from_users")
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "MESSAGE_TEXT")
+    //@Lob Сделать в БД CLOB
     private String text;
 
     //@Column(name = "OWNER")
     @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "user_id")
     private User author;
 
     //Не знаю как задавать

@@ -8,8 +8,8 @@
             background-color: #eee;
             border: 1px solid #ccc;
             float: left;
-            width: 25%;
-            height: 80%;
+            /*width: 25%;
+            height: 80%;*/
         }
 
         #chat {
@@ -18,17 +18,15 @@
             height: 80%;
             overflow: scroll;
         }
-        /*#chatInput{
-            float: ;
-            !*width: 200px;*!
-            height: 80%;
-            overflow: scroll;
-        }*/
+
+        #messageInput{
+
+        }
     </style>
 </head>
 <body>
 <div class="frame">
-    <canvas id="frame">
+    <canvas id="frame" width="400" height="800">
         Ваш браузер не поддерживает Canvas
     </canvas>
     <script>
@@ -71,44 +69,37 @@
 </div>
 
 <div id="chat">
-    <h1>==========================</h1>
-    <form action="/goodnews/crocodile/game" method="get">
-        <h1>Чат</h1>
-        <table border="1">
-            <tr>
-                <th>Автор</th>
-                <th>Текст</th>
-                <th>Дата создания</th>
-            </tr>
-            <c:forEach var="message" items="${messages}">
+    <div id="readMessages">
+        <form action="/goodnews/crocodile/game" method="get">
+            <table border="1">
                 <tr>
-                    <td><c:out value="${message.author.userName}"/></td>
-                    <td><c:out value="${message.text}"/></td>
-                    <td><c:out value="${message.creationDate}"/></td>
+                    <th>Автор</th>
+                    <th>Текст</th>
+                    <th>Дата создания</th>
                 </tr>
-            </c:forEach>
-        </table>
-    </form>
-    <form action="/goodnews/crocodile/game" method="post">
-        <label>Сообщение
-            <input type="text" name="text"/>
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        </label>
-    </form>
-    <script type="text/javascript">
-        var block = document.getElementById("chat");
-        block.scrollTop = block.scrollHeight;
-    </script>
+                <c:forEach var="message" items="${messages}">
+                    <tr>
+                        <td><c:out value="${message.author.userName}"/></td>
+                        <td><c:out value="${message.text}"/></td>
+                        <td><c:out value="${message.creationDate}"/></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </form>
+    </div>
+    <div id="messageInput">
+        <form action="/goodnews/crocodile/game" method="post">
+            <label>Сообщение
+                <input type="text" name="text"/>
+                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+            </label>
+        </form>
+    </div>
 </div>
-<%--<div id="chatInput">
-    <form action="/goodnews/crocodile/game" method="post">
-        <label>Сообщение
-            <input type="text" name="text"/>
-            <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        </label>
-    </form>
-</div>--%>
-
+<script type="text/javascript">
+    var block = document.getElementById("chat");
+    block.scrollTop = block.scrollHeight;
+</script>
 <%--Почему не работает?<script src="/resources/js/canvFrame.js"></script>--%>
 </body>
 </html>

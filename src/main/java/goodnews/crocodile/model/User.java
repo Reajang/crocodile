@@ -1,8 +1,10 @@
 package goodnews.crocodile.model;
 
-import goodnews.crocodile.model.statusEnum.UserRole;
+import goodnews.crocodile.model.statusEnum.Role;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +17,8 @@ import java.util.Set;
 @Table(name = "croc_users")
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class User implements Serializable {
 
     @Id
@@ -36,7 +40,7 @@ public class User implements Serializable {
 
     //Должно работать подругому. через доп таблицу с user_id и списком role_id
     @Enumerated(value = EnumType.STRING)
-    @ElementCollection(targetClass = UserRole.class, fetch = FetchType.EAGER)
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    private Set<UserRole> role = new HashSet<>();
+    private Set<Role> role = new HashSet<>();
 }

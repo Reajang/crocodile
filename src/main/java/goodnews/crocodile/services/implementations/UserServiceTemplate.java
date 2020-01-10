@@ -55,11 +55,16 @@ public class UserServiceTemplate implements UserService {
         User user = findUserById(id).get();
         userRepository.delete(user);
     }
-
+    //Лишнее
     @Override
     public void addMessage(Message message, Long id) {
         User user = userRepository.findById(id).get();
         user.getMessages().add(message);
         userRepository.save(user);
+    }
+
+    @Override
+    public User findUserByUsername(String username) {
+        return userRepository.getUserByUserName(username);
     }
 }

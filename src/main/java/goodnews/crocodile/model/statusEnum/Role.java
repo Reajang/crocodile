@@ -1,5 +1,5 @@
 package goodnews.crocodile.model.statusEnum;
 
-public enum UserRole {
+public enum Role {
     USER, ADMIN, DELETE
 }

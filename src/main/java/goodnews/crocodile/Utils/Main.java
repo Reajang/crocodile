@@ -1,15 +1,10 @@
 package goodnews.crocodile.Utils;
 
 import goodnews.crocodile.config.DbConfig;
-import goodnews.crocodile.model.Message;
-import goodnews.crocodile.model.User;
-import goodnews.crocodile.model.statusEnum.UserRole;
 import goodnews.crocodile.services.implementations.UserServiceTemplate;
 import goodnews.crocodile.services.interfaces.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
-
-import java.sql.*;
 
 /***
  * Временнай класс для проверки всякого

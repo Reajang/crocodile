@@ -11,6 +11,8 @@ public interface UserService {
 
     Optional<User> findUserById(Long id);
 
+    User findUserByUsername(String username);
+
     User save(User user);
 
     boolean isUserExists(String userName, String password);

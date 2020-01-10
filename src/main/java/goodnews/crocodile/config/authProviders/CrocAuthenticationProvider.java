@@ -18,6 +18,7 @@ public class CrocAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        //Заменить userName на login
         String userName = authentication.getName();
         String password = authentication.getCredentials().toString();
         if(service.isUserExists(userName, password)){
